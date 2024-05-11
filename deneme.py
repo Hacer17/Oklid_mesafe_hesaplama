@@ -1,20 +1,33 @@
 import math
 
-points = [(1, 2), (3, 4), (5, 6), (7, 8)]
 
+def main():
+    points = [(2,3),(2,3),(4,5),(6,7),(8,9),(11,23)]
+    
+    distances=[]
+    
+    for i in range(len(points)):
+        for j in range(i+1, len(points)):
+            x = eucladian_dis(points[i], points[j])
+            distances.append(x)
+    
+    
+    minEle=100
+    
+    for i in range(len(distances)):
+        if distances[i]<minEle:
+            minEle=distances[i]
+    
+    print("Minimum uzaklık: ", minEle )
+    
+    
+def eucladian_dis(point1, point2):
+    distance = math.sqrt((point1[0]-point2[0])**2 + (point1[1]-point2[1])**2)
+    
+    return distance
 
-def euclideanDistance(point1, point2):
-    x1, y1 = point1
-    x2, y2 = point2
-    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
-
-
-distances = []
-for i in range(len(points)):
-    for j in range(i + 1, len(points)):
-        dist = euclideanDistance(points[i], points[j])
-        distances.append(dist)
-
-
-min_distance = min(distances)
-print("Minimum mesafe:", min_distance)
+if __name__ == "__main__":
+    main()
+            
+        
+        
